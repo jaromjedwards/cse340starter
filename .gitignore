@@ -19,4 +19,4 @@ node_modules
 README.md
 
 # ignore lock ymal file
-pnpm-lock.ymal
+pnpm-lock.ymal 
