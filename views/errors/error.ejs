@@ -1,0 +1,26 @@
+<!-- views/errors/error.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+<body>
+    <div id="wrapper" class="wrapper">
+        <div class="stuff">
+            <%- include('../partials/header') %>
+            <%- include('../partials/navigation') %>
+
+            <main>
+                <h1><%= title %></h1>
+                <p><%= message %></p> <!-- Display the error message -->
+
+                <!-- You can add humor here if you like -->
+                <p>But don't worry, our team of highly trained monkeys is on the case!</p>
+                <!-- Feel free to add more humorous content or customize as needed -->
+
+            </main>
+
+            <%- include('../partials/footer') %>            
+        </div>
+    </div>
+</body>
+</html>
