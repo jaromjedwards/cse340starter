@@ -25,6 +25,53 @@ Util.getNav = async function (req, res, next) {
 }
 
 /* **************************************
+ * Build the item view HTML
+ * ************************************ */
+Util.buildItemGrid = async function (data) {
+  let grid = "";
+
+  if (data.length > 0) {
+    grid = '<ul id="item-display">';
+    data.forEach((item) => {
+      grid += '<li>';
+      grid +=
+        '<a href="../../item/detail/' +
+        item.item_id +
+        '" title="View ' +
+        item.item_name +
+        ' details"><img src="' +
+        item.item_thumbnail +
+        '" alt="Image of ' +
+        item.item_name +
+        ' on Your Website" /></a>';
+      grid += '<div class="namePrice">';
+      grid += '<hr />';
+      grid += '<h2>';
+      grid +=
+        '<a href="../../item/detail/' +
+        item.item_id +
+        '" title="View ' +
+        item.item_name +
+        ' details">' +
+        item.item_name +
+        '</a>';
+      grid += '</h2>';
+      grid +=
+        '<span>$' +
+        new Intl.NumberFormat('en-US').format(item.item_price) +
+        '</span>';
+      grid += '</div>';
+      grid += '</li>';
+    });
+    grid += '</ul>';
+  } else {
+    grid += '<p class="notice">Sorry, no matching items could be found.</p>';
+  }
+
+  return grid;
+};
+
+/* **************************************
 * Build the classification view HTML
 * ************************************ */
 Util.buildClassificationGrid = async function(data){
@@ -56,6 +103,7 @@ Util.buildClassificationGrid = async function(data){
   }
   return grid
 }
+
 
 /* ****************************************
  * Middleware For Handling Errors

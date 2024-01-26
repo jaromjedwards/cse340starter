@@ -5,19 +5,17 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
-
-const baseController = require("./controllers/baseController")
-
 /* ***********************
  * Require Statements
  *************************/
+const baseController = require("./controllers/baseController")
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const static = require("./routes/static");
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/");
-
+// const itemRoute = require("./routes/itemRoute");
 
 /* ***********************
  * View Engine and Templates
@@ -29,12 +27,12 @@ app.set("layout", "./layouts/layout");
 /* ***********************
  * Routes
  *************************/
-// Remove the redundant use of expressLayouts here
 app.use(static);
 
 // index route
-app.get('/', utilities.handleErrors(baseController.buildHome));
+app.get('/', baseController.buildHome);
 app.use("/inv", inventoryRoute);
+// app.use("/item", itemRoute)
 
 
 /* ***********************
