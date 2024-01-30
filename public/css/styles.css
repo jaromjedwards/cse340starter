@@ -66,15 +66,15 @@ header{
 .tools a{
   color: black;
   grid-column: 3;
-  margin-left: 200px;
+  margin-left: 100px;
 }
-.navigation{
+.nav{
   display: flex;
   flex-direction: row;
   font-size: 20px;
   justify-content: space-between;
   margin: 30px;
-  background-color: black;
+  background-color: #129490;
   color: white;
   padding: 10px;
   padding-left: 20px;
@@ -153,6 +153,52 @@ header{
 footer{
   margin-left: 40px;
 }
+.inv-display-container{
+  display: flex;
+  flex-direction: column;
+}
+.inv-display{
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+
+  padding: 10px;
+  margin: 10px;
+  border-style: solid;
+  border-color: black;
+}
+.inv-display img{
+  width: 85%;
+  border-style: dashed;
+  border-color: #129490;
+  border-width: 3px;
+  border-radius: 10%;
+  padding: 5px;
+}
+.car-name a{
+  color: black;
+  text-decoration: underline;
+}
+.item-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-container img{
+  width: 90%;
+}
+
+.item-p{
+  text-align: center;
+  border-style: dashed;
+  border-color: #129490;
+  border-width: 3px;
+  padding: 5px;
+  margin: 10px;
+
+}
+
+/* LARGE VIEW */
 @media (min-width: 768px) {
   .content-container{
     display: grid;
@@ -162,4 +208,17 @@ footer{
     margin-left: 50px;
     margin-right: 50px;
   }
+
+  .inv-display-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .inv-display{
+    font-size: 1.5em;
+  }
+
+  .tools a{
+    margin-left: 300px;
+  }
+
 }

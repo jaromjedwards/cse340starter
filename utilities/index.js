@@ -6,7 +6,7 @@ const Util = {}
  ************************** */
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications()
-  let list = "<ul>"
+  let list = "<ul class='nav'>"
   list += '<li><a href="/" title="Home page">Home</a></li>'
   data.rows.forEach((row) => {
     list += "<li>"
@@ -27,48 +27,20 @@ Util.getNav = async function (req, res, next) {
 /* **************************************
  * Build the item view HTML
  * ************************************ */
-Util.buildItemGrid = async function (data) {
-  let grid = "";
+Util.buildItem = async function (data) {
 
-  if (data.length > 0) {
-    grid = '<ul id="item-display">';
-    data.forEach((item) => {
-      grid += '<li>';
-      grid +=
-        '<a href="../../item/detail/' +
-        item.item_id +
-        '" title="View ' +
-        item.item_name +
-        ' details"><img src="' +
-        item.item_thumbnail +
-        '" alt="Image of ' +
-        item.item_name +
-        ' on Your Website" /></a>';
-      grid += '<div class="namePrice">';
-      grid += '<hr />';
-      grid += '<h2>';
-      grid +=
-        '<a href="../../item/detail/' +
-        item.item_id +
-        '" title="View ' +
-        item.item_name +
-        ' details">' +
-        item.item_name +
-        '</a>';
-      grid += '</h2>';
-      grid +=
-        '<span>$' +
-        new Intl.NumberFormat('en-US').format(item.item_price) +
-        '</span>';
-      grid += '</div>';
-      grid += '</li>';
-    });
-    grid += '</ul>';
-  } else {
-    grid += '<p class="notice">Sorry, no matching items could be found.</p>';
-  }
+  let container = "<div class='item-container'>"
+  
+  container += '<img src=' + data[0].inv_image + ' alt="no picture found">' +
+  '<h2>$' + new Intl.NumberFormat('en-US').format(data[0].inv_price) + '</h2>' +
+  '<h1>' + data[0].inv_make + '</h1>' +
+  '<h2>' + data[0].inv_model + '</h2>' +
+  '<p class="item-p">' + data[0].inv_description + '</p>' +
+  '<h2>Color: ' + data[0].inv_color + '</h2>' +
+  '<p class="item-p">Miles: ' + new Intl.NumberFormat('en-US').format(data[0].inv_miles) + '</p>' +
+  "</div>"
 
-  return grid;
+  return container;
 };
 
 /* **************************************
@@ -77,17 +49,16 @@ Util.buildItemGrid = async function (data) {
 Util.buildClassificationGrid = async function(data){
   let grid
   if(data.length > 0){
-    grid = '<ul id="inv-display">'
+    grid = '<ul id="inv-display" class="inv-display-container">'
     data.forEach(vehicle => { 
-      grid += '<li>'
+      grid += '<li class="inv-display">'
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
       + 'details"><img src="' + vehicle.inv_thumbnail 
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
       +' on CSE Motors" /></a>'
       grid += '<div class="namePrice">'
-      grid += '<hr />'
-      grid += '<h2>'
+      grid += '<h2 class="car-name">'
       grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
