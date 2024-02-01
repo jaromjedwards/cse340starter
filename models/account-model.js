@@ -1,3 +1,4 @@
+// models/account-model.js
 const pool = require("../database/");
 
 /* *****************************

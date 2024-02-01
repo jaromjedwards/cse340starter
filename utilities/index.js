@@ -116,10 +116,8 @@ Util.getRegistration = async function(req, res, next) {
   container += "  <label for='password'>Password:</label>";
   container += "  <input type='password' id='password' name='password' required>";
 
-  // Only one registration button needed
   container += "  <button type='button' class='account-button' onclick='registerAccont()'>Register</button>";
 
-  // Adding the "already have an account? Login" link
   container += "</form>";
 
   container += "</div>";
