@@ -1,0 +1,11 @@
+<!-- views/account/login.ejs -->
+
+<!-- CONTENT HEADING -->
+<% if (title) { %>
+  <h1 class="titles"><%= title %></h1>
+<% } else {
+  res.redirect('/');
+} %>
+
+<!-- LOGIN CONTENT -->
+<%- login %>

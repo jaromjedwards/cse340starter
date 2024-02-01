@@ -1,3 +1,5 @@
+//utilities/index.js
+
 const invModel = require("../models/inventory-model")
 const Util = {}
 
@@ -74,6 +76,57 @@ Util.buildClassificationGrid = async function(data){
   }
   return grid
 }
+
+Util.getLogin = async function(req, res, next) {
+
+  let container = "<div class='login-container'>";
+
+  // LOGIN FORM
+  container += "<form class='form-container' action='#' method='post' id='loginForm'>";
+  container += "  <label for='email'>Email:</label>";
+  container += "  <input type='email' id='email' name='email' required>";
+
+  container += "  <label for='password'>Password:</label>";
+  container += "  <input type='password' id='password' name='password' required>";
+
+  container += "  <button type='submit' class='account-button' >Login</button>";
+  container += "</form>";
+
+  container += "<p class='no-account'>No account? <a href='/account/registration'>Sign up</a></p>";
+
+  container += "</div>";
+
+  return container;
+};
+
+Util.getRegistration = async function(req, res, next) {
+  let container = "<div class='register-container'>";
+
+  // Adding the registration form
+  container += "<form action='/account/registration' method='post' id='registrationForm' class='register-form'>";
+  container += "  <label for='firstName'>First Name:</label>";
+  container += "  <input type='text' id='firstName' name='firstName' required>";
+
+  container += "  <label for='lastName'>Last Name:</label>";
+  container += "  <input type='text' id='lastName' name='lastName' required>";
+
+  container += "  <label for='email'>Email Address:</label>";
+  container += "  <input type='email' id='email' name='email' required>";
+
+  container += "  <label for='password'>Password:</label>";
+  container += "  <input type='password' id='password' name='password' required>";
+
+  // Only one registration button needed
+  container += "  <button type='button' class='account-button' onclick='registerAccont()'>Register</button>";
+
+  // Adding the "already have an account? Login" link
+  container += "</form>";
+
+  container += "</div>";
+
+  return container;
+};
+
 
 
 /* ****************************************
