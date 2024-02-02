@@ -85,9 +85,8 @@ Util.getLogin = async function(req, res, next) {
   container += "<form class='form-container' action='#' method='post' id='loginForm'>";
   container += "  <label for='email'>Email:</label>";
   container += "  <input type='email' id='email' name='email' required>";
-
   container += "  <label for='password'>Password:</label>";
-  container += "  <input type='password' id='password' name='password' required>";
+  container += "  <input type='password' id='password' name='password' pattern='^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{12,}$' title='Password must contain at least 12 characters, including at least one digit, one lowercase letter, one uppercase letter, and one special character. No spaces allowed.' required>";
 
   container += "  <button type='submit' class='account-button' >Login</button>";
   container += "</form>";
@@ -114,7 +113,7 @@ Util.getRegistration = async function(req, res, next) {
   container += "  <input type='email' id='email' name='email' required>";
 
   container += "  <label for='password'>Password:</label>";
-  container += "  <input type='password' id='password' name='password' required>";
+  container += "  <input type='password' id='password' name='password' pattern='^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{12,}$' title='Password must contain at least 12 characters, including at least one digit, one lowercase letter, one uppercase letter, and one special character. No spaces allowed.' required>";
 
   container += "  <button class='account-button'>Register</button>";
 
@@ -124,8 +123,6 @@ Util.getRegistration = async function(req, res, next) {
 
   return container;
 };
-
-
 
 /* ****************************************
  * Middleware For Handling Errors

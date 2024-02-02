@@ -11,7 +11,8 @@ async function buildLogin(req, res, next) {
   res.render("account/login", {
     title: "Login",
     nav,
-    login
+    login,
+    errors: null,
   })
 }
 
@@ -24,7 +25,8 @@ async function handleRegistration(req, res, next) {
     res.render("account/registration", {
       title: "Registration",
       nav,
-      registration
+      registration,
+      errors: null,
     });
   } else if (req.method === 'POST') {
     // Process registration
