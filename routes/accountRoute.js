@@ -8,8 +8,8 @@ const utilities = require("../utilities")
 
 // Route to controller
 router.get('/login', accountController.buildLogin);
-router.get('/registration', accountController.buildRegistration)
+router.get('/registration', accountController.handleRegistration)
 
-router.post('/registration', accountController.registerAccount)
+router.post('/registration', accountController.handleRegistration)
 
 module.exports = router;
