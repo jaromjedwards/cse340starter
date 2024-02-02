@@ -86,7 +86,7 @@ header{
 .welcome-container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1;
+  grid-template-rows: auto;
 }
 .hero-container{
   grid-column: 1;
