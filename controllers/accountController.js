@@ -18,6 +18,7 @@ async function buildLogin(req, res, next) {
 
 async function handleRegistration(req, res, next) {
   let nav = await utilities.getNav();
+  let login = await utilities.getLogin();
 
   if (req.method === 'GET') {
     // Render registration form
@@ -47,6 +48,7 @@ async function handleRegistration(req, res, next) {
       res.status(201).render("account/login", {
         title: "Login",
         nav,
+        login
       });
     } else {
       req.flash("notice", "Sorry, the registration failed.");

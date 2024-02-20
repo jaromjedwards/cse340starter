@@ -35,4 +35,18 @@ invCont.buildByInvId = async function (req, res, next) {
   })
 }
 
+invCont.buildAll = async function (req, res, next) {
+  const data = await invModel.getAll()
+  const container = await utilities.buildClassificationGrid(data)
+  let nav = await utilities.getNav()
+  const className = data[0].inv_make
+  res.render("./inventory/vehicle", {
+    title: className + " vehicles",
+    nav,
+    container,
+    errors: null,
+  })
+}
+
+
 module.exports = invCont

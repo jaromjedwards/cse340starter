@@ -22,9 +22,12 @@ Util.getNav = async function (req, res, next) {
       "</a>"
     list += "</li>"
   })
+  // Add an "all" item at the end
+  list += '<li><a href="/inv/all" title="See our entire inventory">All</a></li>'
   list += "</ul>"
   return list
 }
+
 
 /* **************************************
  * Build the item view HTML
@@ -104,16 +107,16 @@ Util.getRegistration = async function(req, res, next) {
   // Adding the registration form
   container += "<form action='/account/registration' method='post' id='registrationForm' class='register-form'>";
   container += "  <label for='firstName'>First Name:</label>";
-  container += "  <input type='text' id='firstName' name='firstName' required>";
+  container += "  <input type='text' id='firstName' name='account_firstname' required>";
 
   container += "  <label for='lastName'>Last Name:</label>";
-  container += "  <input type='text' id='lastName' name='lastName' required>";
+  container += "  <input type='text' id='lastName' name='account_lastname' required>";
 
   container += "  <label for='email'>Email Address:</label>";
-  container += "  <input type='email' id='email' name='email' required>";
+  container += "  <input type='email' id='email' name='account_email' required>";
 
   container += "  <label for='password'>Password:</label>";
-  container += "  <input type='password' id='password' name='password' pattern='^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{12,}$' title='Password must contain at least 12 characters, including at least one digit, one lowercase letter, one uppercase letter, and one special character. No spaces allowed.' required>";
+  container += "  <input type='password' id='password' name='account_password' pattern='^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{12,}$' title='Password must contain at least 12 characters, including at least one digit, one lowercase letter, one uppercase letter, and one special character. No spaces allowed.' required>";
 
   container += "  <button class='account-button'>Register</button>";
 
@@ -123,6 +126,8 @@ Util.getRegistration = async function(req, res, next) {
 
   return container;
 };
+
+
 
 /* ****************************************
  * Middleware For Handling Errors

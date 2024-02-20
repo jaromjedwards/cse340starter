@@ -11,10 +11,9 @@ const utilities = require("../utilities")
 router.get('/login', accountController.buildLogin);
 router.get('/registration', accountController.handleRegistration)
 
-router.post('/registration', regValidate.registationRules(),
-regValidate.checkRegData,
-utilities.handleErrors(accountController.registerAccount)
-)
+router.post('/registration', utilities.handleErrors(accountController.handleRegistration))
+// regValidate.checkRegData,
+// utilities.handleErrors(accountController.handleRegistration)
 
 
 module.exports = router;

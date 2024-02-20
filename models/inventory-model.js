@@ -38,4 +38,15 @@ async function getInventoryByInvId(inventory_id) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInvId};
+async function getAll() {
+  try {
+    const data = await pool.query(
+      `SELECT * FROM public.inventory`,
+    )
+    return data.rows
+  } catch (error) {
+    console.error("getinvbyid error " + error)
+  }
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInvId, getAll };
